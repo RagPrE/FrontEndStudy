@@ -15,8 +15,8 @@
   <h2>TASK TWO: wordCount:</h2>
   <div id="app">
     <el-input v-model="input" placeholder="请输入内容" id = "inputbox"></el-input>
-    <span class="contentcount" id = "info">0</span>
-    <p>has Word <span id = "info2"></span> Words</p>
+    <span class="contentcount" id = "info">{{input.length}}</span>
+    <p>has Word <span id = "info2">{{input.length}}</span> Words</p>
   </div>
 </body>
   <script src="scripts/main.js"></script>
@@ -27,15 +27,8 @@
   <script>
     var vm = new Vue({
       el: '#app',
-      data: {
-        input: ''
-      },
-      watch: {
-        input: function(val) {
-          /*this.input = val*/
-          document.getElementById ("info").innerHTML = val.length;
-          document.getElementById ("info2").innerHTML = val.length;
-        }
+      data() {
+        return {input: ''}
       }
     });
   </script>
