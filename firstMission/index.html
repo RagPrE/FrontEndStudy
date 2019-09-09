@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <!--<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">-->
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <h1>First Mission！</h1>
+  <h2>TASK ONE: Add Value:</h2>
+  <p id="demo">1</p>
+  <button class="button" style="vertical-align:middle" id = "myButton"><span> Click to Add One </span></button>
+
+  <h2>TASK TWO: wordCount:</h2>
+  <div id="app">
+    <el-input v-model="input" placeholder="请输入内容" id = "inputbox"></el-input>
+    <span class="contentcount" id = "info">0</span>
+    <p>has Word <span id = "info2"></span> Words</p>
+  </div>
+</body>
+  <script src="scripts/main.js"></script>
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        input: ''
+      },
+      watch: {
+        input: function(val) {
+          /*this.input = val*/
+          document.getElementById ("info").innerHTML = val.length;
+          document.getElementById ("info2").innerHTML = val.length;
+        }
+      }
+    });
+  </script>
+</html>

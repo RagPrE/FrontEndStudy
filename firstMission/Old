@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <!--<link rel="stylesheet" href="styles/style.css" type="text/css">-->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    
+    <script src="scripts/main.js" defer></script>
+  </head>
+  <body>
+      <h1>First Mission！</h1>
+      <h2>TASK ONE: Add Value:</h2>
+      <p id="demo">1</p>
+      <button class="button" style="vertical-align:middle"><span> Click to Add One </span></button>
+      <h1>Second Mission ! </h1>
+    <div id="app">
+      <el-button @click="visible = true">Button</el-button>
+      <el-dialog :visible.sync="visible" title="Hello world">
+        <p>Try Element</p>
+      </el-dialog>
+    </div>
+  </body>
+<!--import vue-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+<!--import element-ui-->
+<script src="https://unpkg.com/element-ui/lib/index.js" defer></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: function() {
+        return { visible: false }
+      }
+    })
+  </script>
+
+</html>
