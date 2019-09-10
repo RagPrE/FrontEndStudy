@@ -11,11 +11,11 @@
   <div id="app">
     <h2>TASK ONE: Add Value:</h2>
     <p>{{value}}</p>
-    <el-button type="primary" v-on:click="addOne">+1s</el-button>
-    <h2>TASK TWO: wordCount:</h2>
+    <el-button type="primary" v-on:click="addOne" style="width: 15%">+1s</el-button>
+    <h2>TASK TWO: Count Word:</h2>
     <el-input v-model="input" placeholder="请输入内容"></el-input>
     <p>has Word <span>{{input.length}}</span> Words</p>
-    <h2>TASK Three: Check VALIDATE:</h2>
+    <h2>TASK Three: Check Validate:</h2>
     <el-input type ="text" v-model="cellPhone"  @input="checkValue" > </el-input>
     <span> {{success}}</span>
   </div>
@@ -25,6 +25,8 @@
   <!-- import JavaScript -->
   <script src="https://unpkg.com/element-ui/lib/index.js"></script>
   <script>
+    var format = /^1/;
+    var num = /^\d+$/;
     var vm = new Vue({
       el: '#app',
       data() {
@@ -32,12 +34,16 @@
       },
       methods:{
         checkValue: function(){
-          if (this.cellPhone.length == 11){
+          /*if (this.cellPhone.length == 11){
             if (this.cellPhone[0] == "1"){
               return this.success = 'CORRECT!'
             }
           }
-          return this.success = 'NOT A VALIDATE PHONE NUMBER'
+          return this.success = 'NOT A VALIDATE PHONE NUMBER'*/
+          if (format.test(this.cellPhone) && num.test(this.cellPhone) && this.cellPhone.length == 11){
+            return this.success = 'CORRECT!'
+          }
+          return this.success = 'NOT A VALIDATE PHONE NUMBER!'
         },
         addOne: function(){
           this.value = this.value + 1
