@@ -25,8 +25,7 @@
   <!-- import JavaScript -->
   <script src="https://unpkg.com/element-ui/lib/index.js"></script>
   <script>
-    var format = /^1/;
-    var num = /^\d+$/;
+    var format = /^1\d{10}$/;
     var vm = new Vue({
       el: '#app',
       data() {
@@ -40,7 +39,7 @@
             }
           }
           return this.success = 'NOT A VALIDATE PHONE NUMBER'*/
-          if (format.test(this.cellPhone) && num.test(this.cellPhone) && this.cellPhone.length == 11){
+          if (format.test(this.cellPhone)){
             return this.success = 'CORRECT!'
           }
           return this.success = 'NOT A VALIDATE PHONE NUMBER!'
