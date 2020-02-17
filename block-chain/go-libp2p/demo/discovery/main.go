@@ -64,7 +64,7 @@ func main() {
 			idht, err = dht.New(ctx, h)
 			return idht, err
 		}),*/
-		//libp2p.EnableAutoRelay(),
+		libp2p.EnableAutoRelay(),
 	)
 
 	if err != nil {
@@ -106,8 +106,6 @@ func main() {
 	for _, addr := range addrs {
 		log.Println(addr.Encapsulate(hostAddr))
 	}
-
-	//log.Printf("Now run \"./routed-echo -l %d -d %s%s\" on a different terminal\n", listenPort+1, routedHost.ID().Pretty(), globalFlag)
 
 	go printTable(ctx, routedHost.ID())
 	//go printNetworkPeers(routedHost)
