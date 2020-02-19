@@ -44,8 +44,10 @@ type Echoer struct {
 // Echo asks a node to respond with a message.
 func (e *Echoer) Echo(ctx context.Context, req *echosvc.EchoRequest) (*echosvc.EchoReply, error) {
 	fmt.Println("handling msg")
+	msg := req.GetMessage() + "send from: " + cfg.Name + "\t"
 	return &echosvc.EchoReply{
-		Message: req.GetMessage(),
+		//Message: req.GetMessage(),
+		Message: msg,
 		PeerId:  e.PeerID.Pretty(),
 	}, nil
 }
@@ -172,7 +174,8 @@ func BroadCastThroughGrpc(grpcProto *p2pgrpc.GRPCProtocol) {
 			}
 			// create our service client
 			echoClient := echosvc.NewEchoServiceClient(grpcConn)
-			echoMsg := "send from: " + cfg.Name + "\t"
+			// echoMsg := "send from: " + cfg.Name + "\t"
+			echoMsg := ""
 			echoReply, err := echoClient.Echo(context.Background(), &echosvc.EchoRequest{Message: echoMsg})
 			if err != nil {
 				log.Fatalln(err)
